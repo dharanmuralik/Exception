@@ -1,0 +1,45 @@
+package com.Onesoft.studentResult;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ResultDao {
+	
+	@Autowired
+	ResultRepository rRepo;
+	
+	public Result getStudentResults(Result r )
+	{
+	 	return  rRepo.save(r);
+	 	  
+	}
+	
+	
+	public List<Result> getAll()
+	{
+		return rRepo.findAll();
+	}
+	
+	
+	
+	public Result getTopper(Result r)
+	{
+		return rRepo.getTopper(r);
+	}
+ 	
+	public List<Result> getTop3 ()
+	{
+		return rRepo.getTop3();
+	}
+	
+	public List<Result> getPercenatage()
+	{
+		return rRepo.getPercenatage();
+	}
+ 	
+	
+
+}

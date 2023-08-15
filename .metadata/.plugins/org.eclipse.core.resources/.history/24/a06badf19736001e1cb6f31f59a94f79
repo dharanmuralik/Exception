@@ -1,0 +1,115 @@
+package com.Onesoft.Employee;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	EmployeeDao empDao;
+	
+	
+	public String addEmployee(Employee e)
+	{
+		return empDao.addEmployee(e);
+	}
+	
+	public Employee getEmployee(int id)
+	{
+		return empDao.getEmployee(id);
+	}
+
+	
+	public String postEmployee( List<Employee> e)
+	{
+		return empDao.postEmployee(e);
+	}
+	
+	
+	public List<Employee> findEmployee( )
+	{
+		return empDao.findEmployee();
+	}
+	
+	public String deleteEmployee( int id)
+	{
+		return empDao.deleteEmployee(id);
+	}
+	
+	public String updateEmployee(Employee e)
+	{
+		return empDao.updateEmployee(e);
+	}
+	
+	
+	public String deleteeAll()
+	{
+		return empDao.deleteeAll();
+		
+	}
+	
+	
+	
+	public List<Employee> getIncreasedSalary()
+	{
+		List <Employee> li=empDao.getIncreasedSalary();
+		
+		return li.stream().map(X->{
+			
+			if(X.getAge()>=30 && X.getAge()<=35)
+			{
+				X.setSalary(X.getSalary()+X.getSalary()*10/100);
+				
+				//return X;
+			}
+			
+			if(X.getAge()>35 && X.getAge()<=40)
+			{
+				X.setSalary(X.getSalary()+X.getSalary()*15/100);
+				
+				//return X;
+			}
+			
+			
+
+			if(X.getAge()>40 && X.getAge()<=50)
+			{
+				X.setSalary(X.getSalary()+X.getSalary()*20/100);
+				//return X;
+			}
+			return X;
+			
+			
+			
+		}).collect(Collectors.toList());
+	}
+	
+	
+	//*********GetBy NAME*****/////
+	
+	public List<Employee> getByName(String name)
+	{
+		
+		List<Employee> li=empDao.getByName();
+		
+		return li.stream().filter(X->X.getName().equalsIgnoreCase(name)).collect(Collectors.toList());
+		
+	}
+	
+	//*****GET BY GENDER*****///
+	
+	public List<Employee> getByGender(String gender)
+	{
+		List<Employee> li=empDao.getByGender();
+		return li.stream().filter(X->X.getGender().equalsIgnoreCase(gender)).collect(Collectors.toList());
+		
+	}
+	
+	
+	
+}

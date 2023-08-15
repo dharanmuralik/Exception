@@ -1,0 +1,5 @@
+package com.Onesoft.Vehicle.dao;
+
+public class CarDao {
+
+}

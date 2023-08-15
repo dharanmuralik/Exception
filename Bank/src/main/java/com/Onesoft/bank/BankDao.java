@@ -1,0 +1,24 @@
+package com.Onesoft.bank;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Repository
+public class BankDao {
+
+	
+	@Autowired
+	BankRepository bRepo;
+	
+	public String getBank(@PathVariable String branch)
+	{
+		return  bRepo.getBank(branch);
+	} 
+	
+/*	public List<Bank> getAll()
+	{
+		return bRepo.getAll();
+	}
+	*/
+}

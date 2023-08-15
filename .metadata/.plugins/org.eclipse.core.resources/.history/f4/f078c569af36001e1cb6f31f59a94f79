@@ -1,0 +1,5 @@
+package com.Onesoft.Vehicle.entity;
+
+public class Bike {
+
+}

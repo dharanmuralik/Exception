@@ -1,0 +1,16 @@
+package com.Onesoft.Hi;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+public class PrintHi {
+	
+	
+	@GetMapping(value="/getHiviaHello")
+	public void print(String name)
+	{
+		System.out.println("Hiii");
+	}
+}

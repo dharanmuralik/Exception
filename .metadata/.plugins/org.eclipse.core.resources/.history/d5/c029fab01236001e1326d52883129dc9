@@ -1,0 +1,26 @@
+package com.Onesoft.Vehicle.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.Onesoft.Vehicle.dao.CarDao;
+import com.Onesoft.Vehicle.entity.CarEntity;
+
+@Service
+public class CarService {
+
+@Autowired
+
+CarDao carD;
+
+public String vehicleAdd(CarEntity v)
+{
+	return carD.vehicleAdd(v);
+}
+
+public String vehicledeleteAll()
+{
+	return carD.vehicledeleteAll();
+}
+
+}

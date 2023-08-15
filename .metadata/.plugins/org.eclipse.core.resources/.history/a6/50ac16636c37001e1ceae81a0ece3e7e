@@ -1,0 +1,31 @@
+package com.Onesoft.Employee;
+
+import java.util.List;
+
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class Carcontroller {
+	
+	RestTemplate res=new RestTemplate();
+	
+	
+	@GetMapping(value="/car/getCarviaEmployee")
+	
+	public List<CarEntity> getCArEmployee(){
+		
+		String url="http://localhost:8081/getAll";
+		
+		ParameterizedTypeReference<CarEntity> response=res.exchange(url, HttpMethod.GET,CarEntity.class);
+				
+		List<CarEntity> value=response
+		return value;
+	}
+	
+	
+
+}

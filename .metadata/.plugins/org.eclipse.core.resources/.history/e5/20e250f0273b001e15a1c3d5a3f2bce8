@@ -1,0 +1,49 @@
+package com.Onesoft.studentResult;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="table")
+public  class Result {
+	
+//	@Id
+//	private int id;
+	@Id
+	private String rollNumber;
+	private String name;
+	private int totalmarks;
+	private int percentage;
+
+	/*
+	 * public int getId() { return id; } public void setId(int id) { this.id = id; }
+	 */
+	public String getRollNumber() {
+		return rollNumber;
+	}
+	public void setRollNumber(String rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getTotalmarks() {
+		return totalmarks;
+	}
+	public void setTotalMarks(int totalmarks) {
+		this.totalmarks = totalmarks;
+	}
+	public int getPercentage() {
+		return percentage;
+	}
+	public void setPercentage(int percentage) {
+		this.percentage = percentage;
+	}
+	
+	
+
+}

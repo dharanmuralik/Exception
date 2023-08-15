@@ -1,0 +1,13 @@
+package com.Onesoft.studentResult;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+public interface ResultRepository extends JpaRepository<Result, String> {
+
+	
+    @Query(value="select * from result_table where totalmarks=(Select max(totalmarks) from result_table ",nativeQuery = true)
+	public Result getTopper(Result r);
+	
+
+}

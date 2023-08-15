@@ -1,0 +1,52 @@
+package com.Onesoft.gst;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class UproductController {
+	
+	@Autowired
+	UproductService prSer;
+	
+	
+	  RestTemplate res=new RestTemplate();
+    ParameterizedTypeReference<List<Product>>  parameterizedTypeReference = new ParameterizedTypeReference<List<Product>>(){};
+	
+	@GetMapping(value="/getCarviaEmployee")
+	
+	public List<Product> getProductplusGst(){
+		
+		String url="http://localhost:8080/getAll";
+		String url2="http://localhost:8081/getAll";
+		List<Product> product=prSer.getAll();
+		for(Product p: product)
+		{
+			ResponseEntity<List<Product>> response=res.exchange(url2+p.getHsncode(),p.setPrice(p.getPrice()+p.getPrice()*/100), HttpMethod.GET, null, Product.class)
+		}
+		
+				
+		List<List> value=response.getBody();
+		return  value;
+	}
+	
+	/*
+	 * @GetMapping(value="/getGst") public List<Gst> getGst() {
+	 * 
+	 * 
+	 * }
+	 */
+	
+
+	
+	
+	
+
+}

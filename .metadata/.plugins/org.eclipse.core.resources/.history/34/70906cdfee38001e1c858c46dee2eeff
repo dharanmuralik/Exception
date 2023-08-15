@@ -1,0 +1,24 @@
+package com.Onesoft.weather;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class WeatherService {
+	
+	@Autowired
+	WeatherDao wDao;
+	
+	
+	public String updateWeather(List<Weather> w)
+	{
+		
+		List<Weather> nw=w;
+		
+		
+		
+	}
+
+}

@@ -1,0 +1,33 @@
+package com.Onesoft.Employee;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+
+public class EmployeeDao {
+	
+	@Autowired
+	EmployeeRepository empRepo;
+	
+	public String addEmployee(Employee e)
+	{
+	 empRepo.save(e);
+	 
+	 return "Successfully Added";
+	
+	}
+	
+	public Employee getEmployee(int id)
+	{
+	
+	
+	 
+	  return empRepo.findById(id).get();
+	  
+	}
+
+}

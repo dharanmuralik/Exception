@@ -1,0 +1,21 @@
+package com.Onesoft.Employee;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+
+public class EmployeeDao {
+	
+	@Autowired
+	EmployeeRepository empRes;
+	
+	public String addEmployee(Employee e)
+	{
+	 empRes.save(e);
+	 
+	 return "Successfully Added";
+	
+	}
+
+}

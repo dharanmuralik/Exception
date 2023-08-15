@@ -1,0 +1,31 @@
+package com.Onesoft.Employee;
+
+import java.util.List;
+
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class Carcontroller {
+	
+	RestTemplate res=new RestTemplate();
+	
+	
+	@GetMapping(value="/getCarviaEmployee")
+	
+	public List<CarEntity> getCArEmployee(){
+		
+		String url="http://localhost:8081/car/getAll";
+		
+		ResponseEntity<CarEntity> response=res.exchange(url, HttpMethod.GET,null,CarEntity.class);
+				
+		List<CarEntity> value=(List<CarEntity>) response.getBody();
+		return value;
+	}
+	
+	
+
+}

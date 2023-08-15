@@ -1,0 +1,21 @@
+package com.Onesoft.customer;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@Repository
+public class CustomerDao {
+	
+	@Autowired
+	CustomerRepository cRepo;
+	
+	public Customer postifsc(@RequestBody Customer c)
+	{
+		
+	Customer d=	cRepo.save(c);
+		return d;
+	}
+
+
+}

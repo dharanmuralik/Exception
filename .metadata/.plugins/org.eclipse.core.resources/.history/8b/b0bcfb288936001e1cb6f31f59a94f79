@@ -1,0 +1,83 @@
+package com.Onesoft.Employee;
+
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+//import org.springframework.web.bind.annotation.PathVariable;
+
+@Repository
+
+public class EmployeeDao {
+	
+	@Autowired
+	EmployeeRepository empRepo;
+	
+	public String addEmployee(Employee e)
+	{
+	 empRepo.save(e);
+	 
+	 return "Successfully Added";
+	
+	}
+	
+	public Employee getEmployee(int id)
+	{
+	
+	
+	 
+	  return empRepo.findById(id).get();
+	  
+	}
+	
+	
+	public String postEmployee(List<Employee> e)
+	{
+		empRepo.saveAll(e);
+		return "Successfully added";
+		
+	}
+	
+	public List<Employee> findEmployee()
+	{
+		return  empRepo.findAll();
+	}
+	
+	public String deleteEmployee( int id)
+	{
+		 empRepo.deleteById(id);
+		 return "Deleted Successfully";
+	}
+
+	
+	public String updateEmployee(Employee e)
+	{
+		empRepo.save(e);
+		return "Updated Successfully";
+		
+	}
+	
+	public String deleteeAll()
+	{
+		empRepo.deleteAll();
+		return "Deleted Successfully";
+	}
+	
+	
+	public List<Employee> getIncreasedSalary()
+	{
+		return empRepo.findAll();
+	}
+	
+	//*********Get BY NAME************//
+	
+	
+	public List<Employee> getByName()
+	{
+		return empRepo.findAll();
+	}
+	
+	
+}

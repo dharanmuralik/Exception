@@ -1,0 +1,5 @@
+package com.Onesoft.Vehicle.repository;
+
+public interface CarRepository {
+
+}

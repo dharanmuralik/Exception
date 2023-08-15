@@ -1,0 +1,128 @@
+package com.Onesoft.Employee;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+
+@RestController
+@RequestMapping(value="/employee")
+public class EmployeeController {
+	
+	@Autowired
+	EmployeeService empSer;
+	
+	@PostMapping(value="/add")
+	public String addEmployee(@RequestBody Employee e)
+	{
+		return empSer.addEmployee(e);
+	}
+	
+	@GetMapping(value="/get/{id}")
+	public Employee getEmployee(@PathVariable int id)
+	{
+		return empSer.getEmployee(id);
+	}
+	
+	
+	@PostMapping(value="/post")
+	public String postEmployee(@RequestBody List<Employee> e)
+	{
+		return empSer.postEmployee(e);
+	}
+	
+	@GetMapping(value="/find")
+	public List<Employee> findEmployee()
+	{
+		return empSer.findEmployee();
+	}
+	
+	@GetMapping(value="/delete/{id}")
+	public String deleteEmployee(@PathVariable int id)
+	{
+		return empSer.deleteEmployee(id);
+	}
+	
+	@PutMapping(value="/update")
+	public String updateEmployee(@RequestBody Employee e)
+	{
+		return empSer.updateEmployee(e);
+	}
+	
+	@GetMapping(value="/deleteall")
+	public String deleteeAll()
+	{
+		return empSer.deleteeAll();
+	}
+	
+	
+	@GetMapping(value="/increasedSalary")
+	public List<Employee> getIncreasedSalary()
+	{
+		return empSer.getIncreasedSalary();
+	}
+	
+	
+	@GetMapping(value="/findByName/{name}")
+	
+	public List<Employee> getByName(@PathVariable String name)
+	{
+		return empSer.getByName(name);
+	}
+	
+	
+	//******GETBYGENDER***********/////
+	
+	@GetMapping(value="/findByGender/{gender}")
+	public List<Employee> getByGender(@PathVariable String gender)
+	{
+		return empSer.getByGender(gender);
+	}
+	
+	//*******GET BY SALARY************//
+	
+	
+	@GetMapping(value="/findById/{id}")
+	public List<Employee> getById(@PathVariable int id)
+	{
+		return empSer.getById(id);
+	}
+	
+	
+	//******EMPLOYEES BY SALARY(QUERY)*******//
+	@GetMapping(value="/getEmployeesbySalary/{salary}")
+	
+	public List<Employee> getEmployeeBySalary(@PathVariable int salary)
+	{
+		return empSer.getEmployeeBySalary(salary);
+	}
+	
+	
+	
+	//******EMPLOYEES BY AGE*********/////
+	
+	@GetMapping(value="/getEmployeesbyAge/{age}")
+	
+	public List<Employee> getEmployeeByAge(@PathVariable int age)
+	{
+		
+		return empSer.getEmployeeByAge(age);
+	}
+	
+	
+	
+	
+	}
+	
+	
+	
+
+
+

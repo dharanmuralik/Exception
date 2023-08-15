@@ -1,0 +1,18 @@
+package com.Onesoft.studentResult;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ResultDao {
+	
+	@Autowired
+	ResultRepository rRepo;
+	
+	public Student getStudentResults(Student std )
+	{
+	 	  Student s=rRepo.saveAll(std);
+	 	  return s;
+	}
+
+}

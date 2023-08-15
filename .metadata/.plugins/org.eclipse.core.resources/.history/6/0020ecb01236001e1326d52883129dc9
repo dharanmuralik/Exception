@@ -1,0 +1,38 @@
+package com.Onesoft.Vehicle.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.Onesoft.Vehicle.entity.CarEntity;
+import com.Onesoft.Vehicle.service.CarService;
+
+
+
+@RestController
+@RequestMapping(value="/car")
+
+public class CarController {
+	
+	
+	@Autowired
+	CarService carSer;
+	
+	@PostMapping(value="/add")
+	public String vehicleAdd(@RequestBody CarEntity v)
+	{
+		return  carSer.vehicleAdd(v);
+	}
+	
+	@GetMapping(value="/deleteAll")
+	
+	public String vehicledeleteAll()
+	{
+		return carSer.vehicledeleteAll();
+	}
+	
+
+}

@@ -1,0 +1,5 @@
+package com.Onesoft.Vehicle.service;
+
+public class CarService {
+
+}

@@ -1,0 +1,29 @@
+package com.Onesoft.Employee;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	EmployeeDao empDao;
+	
+	
+	public String addEmployee(Employee e)
+	{
+		return empDao.addEmployee(e);
+	}
+	
+	public Employee getEmployee(int id)
+	{
+		return empDao.getEmployee(id);
+	}
+
+	
+	public Employee postEmployee( Employee e)
+	{
+		return empDao.postEmployee(e);
+	}
+}

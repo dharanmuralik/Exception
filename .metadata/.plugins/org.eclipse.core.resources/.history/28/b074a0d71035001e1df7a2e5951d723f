@@ -1,0 +1,127 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping(value = "/admin")
+public class Sample {
+
+	@GetMapping(value = "/getHello")
+
+	public String toString() {
+		return "Hello World";
+	}
+
+	@GetMapping(value = "/total/{a}/{b}")
+	public int getTotal(@PathVariable int a, @PathVariable int b) {
+		return a + b;
+	}
+
+	/*
+	 * public String printValue(@PathVariable String a,@PathVariable String
+	 * b,@PathVariable String c) {
+	 * 
+	 * int a1=Integer.parseInt(a.charAt(a.length()-1)); for()
+	 * 
+	 * 
+	 * }
+	 * 
+	 */
+
+	@GetMapping(value = "/Prime/{a}")
+	public String primeValue(@PathVariable int a) {
+
+		int count = 0;
+		for (int i = 2; i < a; i++) {
+			if (a % i == 0) {
+				count++;
+			}
+
+		}
+
+		if (count == 0) {
+			return " PRIME";
+		} else {
+			return "Not Prime";
+		}
+
+	}
+
+	@GetMapping(value = "/Palindrome/{a}")
+
+	public String palindrome(@PathVariable String a) {
+		String b = "";
+
+		for (int i = a.length() - 1; i >= 0; i--) {
+			b = b + a.charAt(i);
+		}
+
+		if (a.equals(b)) {
+			return "Palindrome";
+		} else {
+			return "Not a Palindrome";
+		}
+	}
+
+/*	@GetMapping(value="/PrimebtwnNo/{a}")
+	public List<Integer> primeValueNo(@PathVariable int a,@PathVariable int b) {
+		
+		List<Integer> li=new ArrayList<>();
+	
+		int count=0;
+	for(int i=a;i<b;i++)
+	{
+		
+		for(int j=2;j<b;j++)
+		{
+		if(a%j==0)
+		{
+			count++;
+			
+		}
+		}
+			if(count==0)
+			{
+				li.add(a);
+			}
+			
+		}
+		
+		
+	return li;
+
+}
+*/
+	
+	@GetMapping(value="/fib/{a}")
+	public List<Integer> fibonacci(@PathVariable int d )
+	{
+		List<Integer> li=new ArrayList<>();
+		
+		int a=0;
+		li.add(a);
+		int b=1;
+		li.add(b);
+		
+		int c=0;
+
+		for(int i=2;i<d;i++)
+		{
+			 c=a+b;
+			li.add(c);
+			a=b;
+			b=c;
+						
+		}
+		
+		return li;
+		
+	}
+
+}

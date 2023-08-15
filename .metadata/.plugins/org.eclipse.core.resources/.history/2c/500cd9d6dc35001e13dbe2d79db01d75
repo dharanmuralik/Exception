@@ -1,0 +1,42 @@
+package com.Onesoft.Employee;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Service
+public class EmployeeService {
+	
+	@Autowired
+	EmployeeDao empDao;
+	
+	
+	public String addEmployee(Employee e)
+	{
+		return empDao.addEmployee(e);
+	}
+	
+	public Employee getEmployee(int id)
+	{
+		return empDao.getEmployee(id);
+	}
+
+	
+	public String postEmployee( Employee e)
+	{
+		return empDao.postEmployee(e);
+	}
+	
+	
+	public List<Employee> findEmployee( )
+	{
+		return empDao.findEmployee();
+	}
+	
+	public String deleteEmployee( int id)
+	{
+		return empDao.deleteEmployee(id);
+	}
+}

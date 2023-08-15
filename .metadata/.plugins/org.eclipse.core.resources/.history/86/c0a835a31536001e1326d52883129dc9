@@ -1,0 +1,50 @@
+package com.Onesoft.Vehicle.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.Onesoft.Vehicle.dao.CarDao;
+import com.Onesoft.Vehicle.entity.CarEntity;
+
+@Service
+public class CarService {
+
+@Autowired
+
+CarDao carD;
+
+public String vehicleAdd(CarEntity v)
+{
+	return carD.vehicleAdd(v);
+}
+
+public String vehicledeleteAll()
+{
+	return carD.vehicledeleteAll();
+}
+
+public String vehicleUpdate(CarEntity c)
+{
+	return carD.vehicleUpdate(c);
+}
+
+public String vehicleAddAll(@RequestBody List<CarEntity> c)
+{
+	return carD.vehicleAddAll(c);
+}
+
+public List<CarEntity> getAll()
+{
+	return carD.getAll();
+}
+
+public CarEntity getvalue( int id)
+{
+	return carD.getvalue(id);
+}
+
+}

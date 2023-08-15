@@ -1,0 +1,47 @@
+package com.Onesoft.student;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class StudentDao {
+
+	@Autowired
+	StudentRepository stdRepo;
+
+	public String addStudent(Student std) throws NotAValidAgeException {
+		try {
+			// Student s1= stdRepo.save(std);
+			if (std.getAge() < 18) {
+				throw new NotAValidAgeException(" Only Valid Age is Allowed");
+			}
+
+			else {
+				Student s1 = stdRepo.save(std);
+				return "Added Successfully";
+			}
+		} catch (NotAValidAgeException ae) {
+			return ae.getMessage();
+
+		}
+
+	}
+
+	public Student getStudent(int id) {
+		Student std = stdRepo.findById(id).get();
+		return std;
+	}
+
+	public String deleteStudent(int id) {
+		Student std = stdRepo.findById(id).get();
+		stdRepo.delete(std);
+		return "Selected id successfuly delted";
+	}
+
+	public String updateStudent(Student std) {
+		stdRepo.save(std);
+
+		return "Updated Successfully";
+	}
+
+}

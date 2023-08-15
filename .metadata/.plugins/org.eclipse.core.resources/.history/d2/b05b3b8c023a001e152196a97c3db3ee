@@ -1,0 +1,52 @@
+package com.Onesoft.studentResult;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ResultController {
+
+	RestTemplate rest=new RestTemplate();
+	
+	ParameterizedTypeReference<List<Student1>> pt=new ParameterizedTypeReference<List<Student1>>() {
+	};
+	
+	@Autowired
+	ResultService rSer;
+	
+	public List<Result>  getStudentResults()
+	{
+		
+		String url1="http://localhost:8090/getAll";
+		ResponseEntity<List<Student1>> res=rest.exchange(url1, HttpMethod.GET,  null, pt);
+		
+		List<Student1> value=res.getBody();
+		 
+		//int id=value.getId();
+		
+		String url2="http://localhost:8080/getStudentmark/";
+		
+		
+	    for(Student1 id :value)
+	    {
+		
+		ResponseEntity<Student> res2=rest.exchange(url2+id.getId(), HttpMethod.GET,null,Student.class);
+		
+	 	Student value2=res2.getBody();
+		
+		value2.
+		
+	    }
+	    
+
+		
+	}
+	
+	
+}

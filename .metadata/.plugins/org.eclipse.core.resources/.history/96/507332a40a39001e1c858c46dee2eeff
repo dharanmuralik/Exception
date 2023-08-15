@@ -1,0 +1,42 @@
+package com.Onesoft.studentResult;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+@RestController
+public class ResultController {
+
+	RestTemplate rest=new RestTemplate();
+	
+	@Autowired
+	ResultService rSer;
+	
+	public String  getStudentResults()
+	{
+		
+		String url1="http://localhost:8090/getAll";
+		ResponseEntity<Student1> res=rest.exchange(url1, HttpMethod.GET,  null, Student1.class);
+		
+		Student1 value=res.getBody();
+		 
+		int id=value.getId();
+		
+		String url2="http://localhost:8080/getStudentmark/";
+		
+	
+		
+		ResponseEntity<Student> res2=rest.exchange(url2+id, HttpMethod.GET,null,Student.class);
+		
+		Student value2=res2.getBody();
+		
+		
+		
+		
+		
+	}
+	
+	
+}

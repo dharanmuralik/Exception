@@ -1,0 +1,25 @@
+package com.Onesoft.student;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+
+@Service
+public class StudentService {
+	
+	@Autowired
+	 StudentDao stdDao;
+	
+	public String addStudent(Student std)
+	{
+		return  stdDao.addStudent(std);
+	}
+
+	
+	public Student getStudent( int id)
+	{
+		return stdDao.getStudent(id);
+	}
+	
+	
+}

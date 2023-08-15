@@ -1,0 +1,27 @@
+package com.Onesoft.studentResult;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class ResultDao {
+	
+	@Autowired
+	ResultRepository rRepo;
+	
+	public Result getStudentResults(Result r )
+	{
+	 	return  rRepo.save(r);
+	 	  
+	}
+	
+	
+	public List<Result> getAll()
+	{
+		return rRepo.findAll();
+	}
+	
+
+}

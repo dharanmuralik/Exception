@@ -1,0 +1,21 @@
+package com.Onesoft.student;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class StudentDao {
+	
+	@Autowired
+	StudentRepository stdRepo;
+	
+	public Student totalMarks( Student std)
+	{
+		Student s1=std;
+		s1.setSem1Total(s1.getSem1Practicals()+s1.getSemTheory1());
+		s1.setSem2Total(s1.getSem2Practicals()+s1.getSemTheory2());
+		s1.setSemTheory1(s1.getSemTheory1());
+		return s1;
+	}
+
+}

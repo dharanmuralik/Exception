@@ -1,0 +1,26 @@
+package com.Onesoft.gst;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class GstService {
+
+	
+	@Autowired
+	GstDao gstdao;
+	
+	public List<Gst> getAll()
+	{
+		return gstdao.getAll();
+	
+	}
+	
+	public Integer getPerByHsn( int hsn)
+	{
+		return gstdao.getPerByHsn(hsn);
+	}
+	
+}
